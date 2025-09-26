@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm2c2u6efqe3x"]
+
+[ext_resource type="PackedScene" uid="uid://qn6a3fy21hd2" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://bpyasrs5yhpra" path="res://Scenes/Enemy.tscn" id="2_bo1nx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7u77a"]
+load_path = "res://.godot/imported/backgroundColorFall.png-0e11a61780384131425d746fb62b1fef.ctex"
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jjgbg"]
+
+[node name="Main" type="Node2D"]
+
+[node name="BackgroundColorFall" type="Sprite2D" parent="."]
+position = Vector2(511, 514)
+texture = SubResource("CompressedTexture2D_7u77a")
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(486, 635)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(472, 825)
+shape = SubResource("WorldBoundaryShape2D_jjgbg")
+
+[node name="Enemy" parent="." instance=ExtResource("2_bo1nx")]
+position = Vector2(834, 717)
+scale = Vector2(2, 2)
