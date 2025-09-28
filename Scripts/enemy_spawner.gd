@@ -11,11 +11,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func spone_enemy():
+func _on_timer_timeout() -> void:
 	print("Enemy Spawned")
 	var new_enemy = enemy_tscn.instantiate()
 	add_sibling(new_enemy)
 	
-	var viewport_width=get_viewport_rect().size.x
-	new_enemy.position.x=randf_range(20,viewport_width)
-	new_enemy.position.y= -50
+	var spawn_side = randi() % 2
+	if spawn_side == 0:
+		new_enemy.position.x = 0
+	else:
+		new_enemy.position.x=1200
+	new_enemy.position.y=randi_range(600,740)

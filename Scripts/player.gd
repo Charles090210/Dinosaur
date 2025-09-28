@@ -12,8 +12,13 @@ func _process(delta: float) -> void:
 		print("Spawn that laser!")
 		var new_laser = laser_tscn.instantiate()
 		add_sibling(new_laser)
-		new_laser.position.x=self.position.x+80
-		new_laser.position.y=self.position.y-20
+		
+		if animated_sprite.flip_h:
+			new_laser.global_position = global_position + Vector2(-80, -20)
+			new_laser.direction = Vector2.LEFT
+		else:
+			new_laser.global_position = global_position + Vector2(80, -20)
+			new_laser.direction = Vector2.RIGHT
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -36,3 +41,4 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.play("Idle")
 
 	move_and_slide()
+	
